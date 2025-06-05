@@ -4,14 +4,18 @@ package com.clienteapp.dao;
 
 
 
-import com.clienteapp.model.Cliente;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteDAO {
+import com.clienteapp.model.Cliente;
 
-);
+public class ClienteDAO {
 
     private final String URL = "jdbc:mysql://127.0.0.1:3306/cliente_db";
     private final String USER = "root";
@@ -29,7 +33,6 @@ public class ClienteDAO {
             e.printStackTrace();
         }
     }
-
     public List<Cliente> listarTodos() {
         List<Cliente> lista = new ArrayList<>();
         String sql = "SELECT * FROM clientes";
