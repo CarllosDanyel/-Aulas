@@ -1,0 +1,29 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.neon-text {
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #00ffff;
+}
+
+.arcade-button {
+    background: linear-gradient(45deg, #ff00ff, #00ffff);
+    border: 3px solid #fff;
+    box-shadow: 0 0 10px #ff00ff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.arcade-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00ffff;
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
