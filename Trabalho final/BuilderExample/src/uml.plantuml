@@ -1,0 +1,34 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Carro {
+    - marca : String
+    - modelo : String
+    - ano : int
+    - cor : String
+    - motor : String
+    + toString() : String
+}
+
+class CarroBuilder {
+    - marca : String
+    - modelo : String
+    - ano : int
+    - cor : String
+    - motor : String
+    + setMarca(String) : CarroBuilder
+    + setModelo(String) : CarroBuilder
+    + setAno(int) : CarroBuilder
+    + setCor(String) : CarroBuilder
+    + setMotor(String) : CarroBuilder
+    + build() : Carro
+}
+
+class Main {
+    + main(String[]) : void
+}
+
+CarroBuilder --> Carro : build()
+Main --> CarroBuilder : usa
+
+@enduml
