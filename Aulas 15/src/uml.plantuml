@@ -1,0 +1,61 @@
+@startuml PasswordValidationChain
+interface Handler {
+    +setNext(handler: Handler): Handler
+    +handle(login: String, password: String): ValidationResult
+}
+
+abstract class BaseHandler {
+    -nextHandler: Handler
+    +setNext(handler: Handler): Handler
+    #checkNext(login: String, password: String): ValidationResult
+}
+
+class PasswordLowercaseHandler {
+    +handle(login: String, password: String): ValidationResult
+}
+
+class PasswordSpecialCharHandler {
+    +handle(login: String, password: String): ValidationResult
+}
+
+class PasswordMinLengthHandler {
+    -MIN_LENGTH: int
+    +handle(login: String, password: String): ValidationResult
+}
+
+class PasswordConsecutiveNumbersHandler {
+    +handle(login: String, password: String): ValidationResult
+}
+
+class PasswordNumberHandler {
+    +handle(login: String, password: String): ValidationResult
+}
+
+class PasswordMaxLengthHandler {
+    -MAX_LENGTH: int
+    +handle(login: String, password: String): ValidationResult
+}
+
+class PasswordUppercaseHandler {
+    +handle(login: String, password: String): ValidationResult
+}
+
+class ValidationResult {
+    -success: boolean
+    -message: String
+    +ValidationResult(success: boolean, message: String)
+    +isSuccess(): boolean
+    +getMessage(): String
+    +toString(): String
+}
+
+Handler <|-- BaseHandler
+BaseHandler <|-- PasswordLowercaseHandler
+BaseHandler <|-- PasswordSpecialCharHandler
+BaseHandler <|-- PasswordMinLengthHandler
+BaseHandler <|-- PasswordConsecutiveNumbersHandler
+BaseHandler <|-- PasswordNumberHandler
+BaseHandler <|-- PasswordMaxLengthHandler
+BaseHandler <|-- PasswordUppercaseHandler
+
+BaseHandler "1" --> "0..1" Handler : nextHandler
